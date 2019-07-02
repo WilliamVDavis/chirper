@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+    
+import React, {Component} from '../node_modules/react';
 import './App.css';
-import {BrowserRouter as Router, Link, Redirect} from 'react-router-dom';
-import Route from 'react-router-dom/Route';
+import {BrowserRouter as Router, Link, Redirect} from '../node_modules/react-router-dom';
+import Route from '../node_modules/react-router-dom/Route';
 
 const User = (params)=> {
   return (<h1>Welcome User {params.username}</h1>)
@@ -19,14 +20,9 @@ render() {
     <div className="App">
       <ul>
         <li>
-<Link to="/">Home</Link>
-</li>
-<li>
-<Link to="/about">About</Link>
-</li>
-</ul>
 
-<input type="button" value="log in" onClick={this.loginHandle.bind(this)}/>
+
+
 <Route path="/" exact strict render={
   ()=> {
     return ( <h1>Welcome Home Chirper</h1>);
@@ -37,9 +33,16 @@ render() {
     return ( <h1>About Time You Signed Up</h1>);
   }
   }/>
-  <Route path="/user:username" exact strict rendeer={({match})=>(
+  <Route path="/user:username" exact strict render={({match})=>(
     this.state.loggedIn ? ( <User username={match.params.username}/>) : (<Redirect to='/'/>)
   )}/>
+<Link to="/">Home</Link>
+</li>
+<li>
+<Link to="/about">About</Link>
+</li>
+</ul>
+<input type="button" value="Log in" onClick={this.loginHandle.bind(this)}/>
     </div>
     </Router>
   );
